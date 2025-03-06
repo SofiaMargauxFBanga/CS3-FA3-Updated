@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <title>FA3</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 50px;
+            color: white;
+        }
+        h2 {
+            color: #fff;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            background: linear-gradient(45deg, #ff6a88, #ff99ac);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 30px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #ff4e72, #ff7b9e);
+            transform: scale(1.05);
+        }
+        #results {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            color: #333;
+            max-width: 400px;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #ff4e72;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        function generateNumbers() {
+            let num1 = Math.ceil(Math.random() * 20);
+            let num2 = Math.ceil(Math.random() * 20);
+            let num3 = Math.ceil(Math.random() * 20);
+
+            let biggest = Math.max(num1, num2, num3);
+            let nthLetter = String.fromCharCode(64 + num1);
+            let hours = Math.floor((num2 * num3) / 60);
+            let minutes = (num2 * num3) % 60;
+
+            document.getElementById("results").innerHTML = `
+                <p><strong>🎲 Generated numbers:</strong> <span class="highlight">${num1}, ${num2}, ${num3}</span></p>
+                <p><strong>🏆 Biggest number:</strong> <span class="highlight">${biggest}</span></p>
+                <p><strong>🔠 ${num1}th letter in the alphabet:</strong> <span class="highlight">${nthLetter}</span></p>
+                <p><strong>⏳ Time breakdown of (${num2} * ${num3}) mins:</strong> <span class="highlight">${hours} hr ${minutes} min</span></p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <h2>✨ Random Numbers Operations ✨</h2>
+    <button onclick="generateNumbers()">🎰 Generate</button>
+    <div id="results"></div>
+</body>
+</html>
